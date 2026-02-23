@@ -125,5 +125,5 @@ execute: |
 
     echo Verify snaps are present
     test -e "$ROOT"/system-seed/snaps/core24_*.snap
-    test -e "$ROOT"/system-seed/snaps/test-qemu-optee-kernel_*.snap
+    test -e "$ROOT"/system-seed/snaps/pi-kernel_*.snap
     test -e "$ROOT"/system-seed/snaps/snapd_*.snap

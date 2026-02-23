@@ -16,7 +16,9 @@
             "type": "gadget"
         },
         {
-            "name": "test-qemu-optee-kernel",
+            "default-channel": "24/edge",
+            "id": "jeIuP6tfFrvAdic8DMWqHmoaoukAPNbJ",
+            "name": "pi-kernel",
             "type": "kernel"
         },
         {
