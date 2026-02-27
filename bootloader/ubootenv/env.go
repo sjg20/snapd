@@ -368,12 +368,14 @@ func writeToDevice(fname string, buf []byte, offset int64, minimumSize int64) er
 	}
 	defer f.Close()
 
-	fi, err := f.Stat()
+	// Use seek to determine size instead of stat, since stat returns
+	// zero for partition device nodes
+	size, err := f.Seek(0, io.SeekEnd)
 	if err != nil {
 		return err
 	}
-	if fi.Size() < minimumSize {
-		return fmt.Errorf("device too small: got %d bytes, need %d", fi.Size(), minimumSize)
+	if size < minimumSize {
+		return fmt.Errorf("device too small: [%s] got %d bytes, need %d", fname, size, minimumSize)
 	}
 
 	if _, err := f.Seek(offset, io.SeekStart); err != nil {
